@@ -1,0 +1,3 @@
+export(initDat)
+export(str_lengthTest)
+export(sumTechReps)

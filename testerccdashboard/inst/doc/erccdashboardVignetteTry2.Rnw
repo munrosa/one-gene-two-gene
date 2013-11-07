@@ -1,0 +1,74 @@
+%\VignetteIndexEntry{testerccdashboard examples}
+
+\documentclass{article}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\title{{\tt testerccdashboard} Package Example}
+\author{Sarah A. Munro}
+\maketitle
+
+% \begin{center}
+% \Large
+% {\tt erccdashboard} Package Vignette
+% \normalsize
+% \end{center}
+This vignette describes the use of the erccdashboard R package to analyze 
+External RNA Control Consortium (ERCC) spike-in controls in gene expression 
+experiments. Two types of data from the SEQC/MAQC III project were analyzed.
+\begin{enumerate}
+  \item Rat toxicogenomics treatment and control samples for different drug 
+  treatments
+  \item Human reference RNA samples from the MAQC I project, Universal Human 
+  Reference RNA (UHRR) and Human Brain Reference RNA (HBRR)
+\end{enumerate}
+
+\section{Rat Toxicogenomics Example: MET treatment}
+\subsection{initDat function to create expDat}
+Load the testerccdashboard package. 
+<<initializeData,keep.source=T,results=hide,echo=TRUE>>=
+library( "testerccdashboard" )
+@
+Load Rat Toxicogenomics Data set.
+<<loadRatData,keep.source=T>>=
+load(file = system.file("data/SEQC.RatTox.Example.RData", 
+                        package = "testerccdashboard"))
+@
+The R workspace should now contain 5 count tables and for each count table a 
+corresponding total reads vector.
+Take a look at the data for the MET experiment.
+<<inspectRatData,keep.source=T>>=
+head(COH.RatTox.ILM.MET.CTL.countTable)
+COH.RatTox.ILM.MET.CTL.totalReads
+@
+The first column of the count table, "Feature", contains unique names for all
+the transcripts that were quantified in this experiment. The remaining columns
+represent sample replicates and each column heading is unique
+
+The total reads vectors will be used for library size normalization of the count
+tables. Total reads can either represent the total number of reads in FASTQ 
+files or total mapped reads. In the examples provided with this package FASTQ 
+file total reads are used.
+
+Control rat samples are labeled CTL and the labels 3ME, MET, NAP, THI,
+and NIT represent the Count tables for 5 different rat toxicogenomics 
+experiments and vectors with total reads for each da
+Define the list, expDat, to contain experimental data and metadata.
+
+countTable, totalReads, designFactors, sample1Name, 
+                  sample2Name, erccMixes, ERCCdilution, spikeVol, totalRNAmass,
+                  printPDF, filenameRoot, DEtest, choseFDR,
+                  totalSeqReads, libeSizeNorm, myYLimMA, myXLim, myYLim
+<<initializeData,keep.source=T>>=
+expDat <- initDat(countTable=COH.RatTox.ILM.MET.CTL.countTable,
+                  totalReads=COH.RatTox.ILM.MET.CTL.totalReads, 
+                  designFactors = c("Sample","Library"), sample1Name = "MET", 
+                  sample2Name = "CTL", erccMixes = "Ambion4plexPair",
+                  ERCCdilution = 1/100, spikeVol = 1, totalRNAmass = 0.500,
+                  printPDF = F, filenameRoot = "COH.ILM", DEtest = T, 
+                  choseFDR = 0.1, totalSeqReads = T, libeSizeNorm = T,
+                  myYLimMA = c(-3.5,3.5), myXLim = c(-10,15),myYLim = NULL)
+print(str(expDat))
+@
+\end{document}

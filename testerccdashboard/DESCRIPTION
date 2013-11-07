@@ -1,0 +1,50 @@
+Package: testerccdashboard
+Type: Package
+Title: Assessment of Gene Expression Measurement Technical Performance with
+    External Spike-in RNA Controls
+Version: 1.0
+Author: Sarah Munro <sarah.munro@nist.gov>
+Maintainer: Sarah Munro <sarah.munro@nist.gov>
+Description: erccdashboard produces graphs and performance metrics for gene
+    expression measurements derived from analysis of the External RNA
+    Control Consortium (ERCC) spike-in controls.
+URL: http://nist.gov/erccControls
+Depends:
+    R (>= 2.15.0)
+Imports:
+    ggplot2,
+    reshape2,
+    plyr,
+    scales,
+    edgeR,
+    locfit,
+    QuasiSeq,
+    grid
+License: GPL (>=2)
+Collate:
+    'QL.results.R'
+    'compareReps.R'
+    'dashboardPDF.R'
+    'dynRangePlot.R'
+    'dynRangePlotLODR.R'
+    'erccROC.R'
+    'estLODR.R'
+    'estMnLibeFactor.R'
+    'est_r_m.R'
+    'geneExprTest.R'
+    'getDesignMat.R'
+    'initDat.R'
+    'libeSizeNorm.R'
+    'loadERCCInfo.R'
+    'loadExpMeas.R'
+    'loadExpMeasFromRaw.R'
+    'maConcPlot.R'
+    'meltExpDat.R'
+    'multiplot.R'
+    'prepERCCDat.R'
+    'printLODRres.R'
+    'saveInputs.R'
+    'saveResults.R'
+    'str_lengthTest.R'
+    'sumTechReps.R'
+    'testDE.R'
