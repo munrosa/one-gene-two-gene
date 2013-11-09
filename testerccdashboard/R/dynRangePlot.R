@@ -103,7 +103,9 @@ dynRangePlot <- function(expDat, expressDat = expDat$expressDat,
   
   #print(which(AandBAveSD$Feature %in% cutERCCs))
   if(length(cutERCCs) != 0){
-    print("These ERCCs were not included in the signal-abundance plot, because not enough non-zero replicate measurements of these controls were obtained for both samples:")
+    cat(paste("These ERCCs were not included in the signal-abundance plot,",
+                "because not enough non-zero replicate measurements of these ",
+                "controls were obtained for both samples:","",sep = '\n'))
     print(as.character(cutERCCs))
     AandBAveSD = AandBAveSD[-(which(AandBAveSD$Feature %in% cutERCCs)),]  
   } 

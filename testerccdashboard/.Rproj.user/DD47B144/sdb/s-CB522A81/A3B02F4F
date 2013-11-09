@@ -1,0 +1,15 @@
+{
+    "contents" : "Package: testerccdashboard\nType: Package\nTitle: Assessment of Gene Expression Measurement Technical Performance with\n    External Spike-in RNA Controls\nVersion: 1.0\nAuthor: Sarah Munro <sarah.munro@nist.gov>\nMaintainer: Sarah Munro <sarah.munro@nist.gov>\nDescription: erccdashboard produces graphs and performance metrics for gene\n    expression measurements derived from analysis of the External RNA\n    Control Consortium (ERCC) spike-in controls.\nURL: http://nist.gov/erccControls\nDepends:\n    R (>= 2.15.0)\nImports:\n    ggplot2,\n    reshape2,\n    plyr,\n    scales,\n    edgeR,\n    locfit,\n    QuasiSeq,\n    grid,\n    gridExtra,\n    stringr\nLicense: GPL (>=2)\nCollate:\n    'QL.results.R'\n    'compareReps.R'\n    'dashboardPDF.R'\n    'dynRangePlot.R'\n    'dynRangePlotLODR.R'\n    'erccROC.R'\n    'estLODR.R'\n    'estMnLibeFactor.R'\n    'est_r_m.R'\n    'geneExprTest.R'\n    'getDesignMat.R'\n    'initDat.R'\n    'libeSizeNorm.R'\n    'loadERCCInfo.R'\n    'loadExpMeas.R'\n    'loadExpMeasFromRaw.R'\n    'maConcPlot.R'\n    'meltExpDat.R'\n    'multiplot.R'\n    'prepERCCDat.R'\n    'printLODRres.R'\n    'saveInputs.R'\n    'saveResults.R'\n    'str_lengthTest.R'\n    'sumTechReps.R'\n    'testDE.R'\n",
+    "created" : 1383971064441.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3993633425",
+    "id" : "A3B02F4F",
+    "lastKnownWriteTime" : 1383971075,
+    "path" : "~/Documents/NISTMunro/Projects/testerccdashboard/DESCRIPTION",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "dcf"
+}

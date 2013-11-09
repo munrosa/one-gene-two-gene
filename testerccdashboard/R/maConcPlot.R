@@ -1,6 +1,6 @@
 # Plots with target ratios and R adjusted ratios, MA plots and Ratio Summaries
-maConcPlot <-function(expDat, LODR.annot.ERCC, alphaPoint = 0.8,r_mAdjust = T, replicate = T, ReplicateName){
-  
+maConcPlot <-function(expDat, LODR.annot.ERCC, alphaPoint = 0.8,r_mAdjust = T, replicate = T){
+  ReplicateName = "Rep"
   # Melt the data
   expDat <- meltExpDat(expDat, cnt = expDat$Transcripts, designMat = expDat$designMat)
   print(str(expDat))

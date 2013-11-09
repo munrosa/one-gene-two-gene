@@ -1,5 +1,16 @@
-loadExpMeas<- function(expDat, countTable, designFactors = c("Study","Platform","Site","Sample","Library"), totalReads = NULL){
+loadExpMeas<- function(expDat, countTable, totalReads = NULL){
   
+  designFactors <- c("Sample","Rep")
+  
+  # Check for countable input errors
+  for (i in 2:length(colnames(countTable))){
+      if (str_count(colnames(countTable[c(i)]),"_") != 1){
+        stop("Check countTable column names for use of underscore (_)")
+      }
+  }
+  if (anyDuplicated(colnames(countTable)) > 0){
+    stop("Column names must be unique sample IDs")  
+  }
   sampleInfo = expDat$sampleInfo
   # Pull idCols out of expDat
   idCols <- sampleInfo$idCols 
@@ -8,10 +19,6 @@ loadExpMeas<- function(expDat, countTable, designFactors = c("Study","Platform",
     expDat$totalReads = NULL
   }else{
     expDat$totalReads = totalReads
-  }
-  print(colnames(countTable))
-  if (anyDuplicated(colnames(countTable)) > 0){
-  print("Column names must be unique sample IDs")  
   }
   
   Transcripts = countTable

@@ -16,12 +16,20 @@
 #' arrange(mtcars, cyl, disp)
 #' arrange(mtcars, cyl, desc(disp))
 
-initDat <- function(countTable, totalReads, designFactors, 
-                    sample1Name, sample2Name, erccMixes, 
-                    ERCCdilution = 1, spikeVol = 1, totalRNAmass = 1, 
-                    printPDF = T, filenameRoot, DEtest = T, 
-                    choseFDR= 0.05, totalSeqReads = T, libeSizeNorm = T, 
-                    myYLimMA = c(-3.5,3.5), myXLim = c(-10,15),myYLim = NULL){
+initDat <- function(countTable, totalReads, filenameRoot, sample1Name, 
+                    sample2Name, ERCCdilution, spikeVol, totalRNAmass, choseFDR,
+                    printPDF = T){
+  ## These variables may become options for user later, for now they will be defined as
+  ## internal default values
+  DEtest = T
+  erccMixes = "Ambion4plexPair"
+  totalSeqReads = T
+  libeSizeNorm = T
+  myYLimMA = c(-3.5,3.5)
+  myXLim = c(-10,15)
+  myYLim = NULL
+  ##############################
+  
   library(ggplot2)
   library(reshape2)
   library(plyr)
@@ -30,8 +38,10 @@ initDat <- function(countTable, totalReads, designFactors,
   library(locfit)
   library(QuasiSeq)
   library(grid)
-  
-  sampleInfo = list(designFactors = designFactors, sample1Name = sample1Name,
+  library(gridExtra)
+  library(stringr)
+
+  sampleInfo = list(sample1Name = sample1Name,
                     sample2Name = sample2Name, choseFDR = choseFDR,
                     ERCCdilution = ERCCdilution, spikeVol = spikeVol,
                     totalRNAmass = totalRNAmass, printPDF = printPDF, 
@@ -44,7 +54,7 @@ initDat <- function(countTable, totalReads, designFactors,
   if (!is.null(filenameRoot)){
     expDat <- dashboardPDF(expDat,filenameRoot = filenameRoot)  
   }else{
-    expDat <- dashboardPDF(expDat)
+    stop("The filenameRoot character string has not been defined!")
   }
   
   
@@ -55,7 +65,7 @@ initDat <- function(countTable, totalReads, designFactors,
   ###############################################################################
   # Assume user has created data frame countTable and totalReads vector
   # process those data files to add to expDat structure
-  expDat <- loadExpMeas(expDat, countTable, designFactors, totalReads)
+  expDat <- loadExpMeas(expDat, countTable, totalReads)
   
   ###############################################################################
   # library size normalize the data

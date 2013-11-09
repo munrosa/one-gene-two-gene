@@ -1,0 +1,15 @@
+{
+    "contents" : "export(initDat)\nexport(str_lengthTest)\nexport(sumTechReps)\nexport(est_r_m)\nexport(dynRangePlot)\nexport(geneExprTest)\nexport(estLODR)\nexport(maConcPlot)\nexport(saveResults)\nexport(dynRangePlotLODR)\nexport(printLODRres)\nexport(erccROC)",
+    "created" : 1383970875617.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "787279444",
+    "id" : "3DA3FABE",
+    "lastKnownWriteTime" : 1383970883,
+    "path" : "~/Documents/NISTMunro/Projects/testerccdashboard/NAMESPACE",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_namespace"
+}

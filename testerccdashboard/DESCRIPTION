@@ -19,7 +19,9 @@ Imports:
     edgeR,
     locfit,
     QuasiSeq,
-    grid
+    grid,
+    gridExtra,
+    stringr
 License: GPL (>=2)
 Collate:
     'QL.results.R'
