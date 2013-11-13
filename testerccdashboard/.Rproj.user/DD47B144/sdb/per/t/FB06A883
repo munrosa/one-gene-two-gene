@@ -1,0 +1,15 @@
+{
+    "contents" : "geneExprTest <- function(expDat, cnt, designMat ){\n  sampleInfo <- expDat$sampleInfo\n  info <- designMat\n  choseFDR <- sampleInfo$choseFDR\n  qvalFile <- paste(sampleInfo$filenameRoot,\"quasiSeq.res.csv\",sep=\".\")\n  # First 3 columns of qvalFile must contain Feature, pvals, and qvals\n  # Decide to reuse results or run testDE\n  if (file.exists(qvalFile) == TRUE){\n    cat(paste(\"\\n Differential expression test results exist, will use   \\n\",\n              \"existing results for analysis. No dispersion plots will\\n\",\n              \"be produced. Delete\", qvalFile, \"if  \\n\",\n              \"you want to repeat differential expression testing.    \\n\"))\n  }else{\n    suppressWarnings(testDE(sampleInfo, expDat, cnt = cnt, info = info ))\n  }\n  deRes <- read.csv(file = paste(sampleInfo$filenameRoot,\"quasiSeq.res.csv\",\n                                 sep=\".\"))\n  \n  p.thresh<-.1\n  \n  if(any(deRes$qvals<choseFDR)) p.thresh<-max(deRes$pvals[deRes$qvals<choseFDR])\n  \n    cat(\"\\nThreshold P-value\\n\")\n    cat(p.thresh,\"\\n\")\n  \n  if (p.thresh > .1){\n    cat(paste(\"Threshold P-value is high for the chosen FDR of \", \n                as.character(choseFDR)))\n    cat(paste(\"The sample comparison indicates a large amount of \\n\",\n              \"differential expression in the measured transcript \\n\",\n              \"populations\\n\"))\n  }\n  expDat$p.thresh <- p.thresh\n  return(expDat)\n}\n",
+    "created" : 1384219190412.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3136226596",
+    "id" : "FB06A883",
+    "lastKnownWriteTime" : 1384206269,
+    "path" : "~/Documents/NISTMunro/Projects/testerccdashboard/R/geneExprTest.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

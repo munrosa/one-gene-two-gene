@@ -26,7 +26,7 @@ testDE<- function(sampleInfo, expDat, cnt = cnt, info = info){
   cnt = unique(cnt)
   Features = make.names(cnt$Feature,unique=T)
   Features = gsub(".","-", Features, fixed = T)
-  print(str(cnt))
+  #print(str(cnt))
   #print(dim(cnt))
   rownames(cnt)<-Features; cnt<-as.matrix(cnt[,-1])
   
@@ -63,7 +63,7 @@ testDE<- function(sampleInfo, expDat, cnt = cnt, info = info){
   d <- DGEList(counts=cnt,group=group)
   # use log.offset for the library size
   d$samples$lib.size <- exp(log.offset) 
-  print(d$samples$lib.size)
+  #print(d$samples$lib.size)
   #Dispersion trend
   design <- model.matrix(~group)
   d1 <- estimateGLMCommonDisp(d,design,verbose=TRUE)
@@ -206,7 +206,7 @@ testDE<- function(sampleInfo, expDat, cnt = cnt, info = info){
   dispERCCcnt$Ratio <- as.factor(dispERCCcnt$Ratio) 
   
   dispPlot = ggplot(dispcnt) +  geom_point(data = dispcnt, aes(x = x, y = y),colour = "grey85",size = 5, alpha = 0.6) + geom_point(data = dispERCCcnt, aes(x = meanCnt, y = disp, colour = Ratio), size = 5, alpha = 0.6) + xlab("Mean Counts") + ylab("Negative Binomial Dispersion") + stat_smooth(data = dispcntSort,aes(x = xsort, y = ysort),colour = "black", alpha = 0.8)  + colScale + scale_x_log10()
-  print(dispPlot)
+  #print(dispPlot)
   
   
   phi.hat<-use.fit$phi.hat.dev[1:nrow(cnt)]

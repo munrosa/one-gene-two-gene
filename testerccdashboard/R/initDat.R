@@ -21,7 +21,6 @@ initDat <- function(countTable, totalReads, filenameRoot, sample1Name,
                     printPDF = T){
   ## These variables may become options for user later, for now they will be defined as
   ## internal default values
-  DEtest = T
   erccMixes = "Ambion4plexPair"
   totalSeqReads = T
   libeSizeNorm = T
@@ -45,7 +44,7 @@ initDat <- function(countTable, totalReads, filenameRoot, sample1Name,
                     sample2Name = sample2Name, choseFDR = choseFDR,
                     ERCCdilution = ERCCdilution, spikeVol = spikeVol,
                     totalRNAmass = totalRNAmass, printPDF = printPDF, 
-                    DEtest = DEtest, totalSeqReads = totalSeqReads, 
+                    totalSeqReads = totalSeqReads, 
                     libeSizeNorm = libeSizeNorm, myYLimMA = myYLimMA,
                     myXLim = myXLim, myYLim = myYLim)
   

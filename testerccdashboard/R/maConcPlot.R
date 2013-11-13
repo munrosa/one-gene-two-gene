@@ -3,7 +3,7 @@ maConcPlot <-function(expDat, LODR.annot.ERCC, alphaPoint = 0.8,r_mAdjust = T, r
   ReplicateName = "Rep"
   # Melt the data
   expDat <- meltExpDat(expDat, cnt = expDat$Transcripts, designMat = expDat$designMat)
-  print(str(expDat))
+  
   countPair <- expDat$expressDat_l
   sampleInfo <- expDat$sampleInfo
   myYLim = sampleInfo$myYLimMA
@@ -38,8 +38,7 @@ maConcPlot <-function(expDat, LODR.annot.ERCC, alphaPoint = 0.8,r_mAdjust = T, r
   library(gridExtra)
   
   if (length(cutoffs) > 0){
-    print("LODR estimates:")
-    print(cutoffs)  
+    print("LODR estimates will be used to code ratio-abundance plot")  
   }
   
   counts1 = countPair$NormCounts[which(countPair$Sample == sample1)]
@@ -57,7 +56,6 @@ maConcPlot <-function(expDat, LODR.annot.ERCC, alphaPoint = 0.8,r_mAdjust = T, r
     Adat = log2((counts1 + counts2)/2)
     colIdx <- which(colnames(countPair) == ReplicateName)
     maData = data.frame(Feature = countPair$Feature[which(countPair$Sample == sample1)], Ratio = countPair$Ratio[which(countPair$Sample == sample1)], M = Mdat, A = Adat, Replicate = countPair[which(countPair$Sample == sample1),colIdx])
-    print(head(maData))
   }else{
     stop("Replicate samples are needed")
     maData = data.frame(Feature = countPair$Feature, Ratio = countPair$Ratio,M = countPair$Mdat, A = countPair$Adat)
@@ -85,13 +83,15 @@ maConcPlot <-function(expDat, LODR.annot.ERCC, alphaPoint = 0.8,r_mAdjust = T, r
   maDataAveSD = cbind(row.names(maDataAve),maData$Ratio[match(row.names(maDataAve),table=maData$Feature)],maData$Empirical[match(row.names(maDataAve),table=maData$Feature)],maData$A[match(row.names(maDataAve),table=maData$Feature)], maDataAve[c(1)])
   
   names(maDataAveSD)[1:5] = c("Feature","Ratio","Empirical","A","M.Ave")
-  #print(dim(maDataAveSD))
+  
   maDataSD <- as.vector(tapply(maData$M,maData[,"Feature"],sd))
   maDataAveSD$M.SD = maDataSD
   
   cutERCCs = unique(maDataAveSD$Feature[which(is.na(maDataAveSD$M.SD))])
     
-  print("These ERCCs were not included in the ratio-abundance plot, because not enough non-zero replicate measurements of these controls were obtained for both samples:")
+  print(paste("These ERCCs were not included in the ratio-abundance plot, ",
+              "because not enough non-zero replicate measurements of these ",
+              "controls were obtained for both samples:"))
   print(as.character(cutERCCs))
     
   if(length(cutERCCs) != 0){
@@ -129,9 +129,9 @@ maConcPlot <-function(expDat, LODR.annot.ERCC, alphaPoint = 0.8,r_mAdjust = T, r
     
   params<-list(Mo = 0.1, lambda = 2) # setup default params.
   f = coef(lmfit)[[1]]  
-  print("Using default parameters")
-  print(params)
-  print(f)
+  #print("Using default parameters")
+  #print(params)
+  #print(f)
     
   while(TRUE){
       
@@ -139,14 +139,14 @@ maConcPlot <-function(expDat, LODR.annot.ERCC, alphaPoint = 0.8,r_mAdjust = T, r
     try(expmod<-nls(formula=M.SD ~ Mo*exp(-lambda * A) + f, data = ratVarDat,start = params)); # does not stop in the case of error
     
     if(!is.null(expmod))break; # if nls works, then quit from the loop
-    print("Try changing initial guess for parameters")
+    #print("Try changing initial guess for parameters")
     params<-list(Mo = sdGlobal, lambda = 0.2)# change the params for nls
-    print(params)
+    #print(params)
     
     }
   
   if(!is.null(expmod)) stdevCoef <- rbind(stdevCoef, summary(expmod)$coefficients); 
-  print(stdevCoef)
+  #print(stdevCoef)
   row.names(stdevCoef)<- c("Minimum SD Estimate", "Maximum SD Estimate", "Lambda")
   print(stdevCoef)
   

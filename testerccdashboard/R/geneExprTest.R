@@ -1,31 +1,34 @@
 geneExprTest <- function(expDat, cnt, designMat ){
   sampleInfo <- expDat$sampleInfo
   info <- designMat
-  DEtest <- sampleInfo$DEtest
   choseFDR <- sampleInfo$choseFDR
-  if (DEtest == TRUE){
+  qvalFile <- paste(sampleInfo$filenameRoot,"quasiSeq.res.csv",sep=".")
+  # First 3 columns of qvalFile must contain Feature, pvals, and qvals
+  # Decide to reuse results or run testDE
+  if (file.exists(qvalFile) == TRUE){
+    cat(paste("\n Differential expression test results exist, will use   \n",
+              "existing results for analysis. No dispersion plots will\n",
+              "be produced. Delete", qvalFile, "if  \n",
+              "you want to repeat differential expression testing.    \n"))
+  }else{
     suppressWarnings(testDE(sampleInfo, expDat, cnt = cnt, info = info ))
   }
-  if (DEtest == FALSE){
-    print(paste("Not testing for differential expression, no dispersion plots",
-                "will be produced and pre-existing DE test result files will", 
-                "be used for additional analysis"))
-  }
-  
-  deRes <- read.csv(file = paste(sampleInfo$filenameRoot,"quasiSeq.res.csv",sep="."))
+  deRes <- read.csv(file = paste(sampleInfo$filenameRoot,"quasiSeq.res.csv",
+                                 sep="."))
   
   p.thresh<-.1
   
   if(any(deRes$qvals<choseFDR)) p.thresh<-max(deRes$pvals[deRes$qvals<choseFDR])
   
-  print("Threshold P-value")
-  print(p.thresh)
+    cat("\nThreshold P-value\n")
+    cat(p.thresh,"\n")
   
   if (p.thresh > .1){
-    print(paste("Threshold P-value is high for the chosen FDR of", 
+    cat(paste("Threshold P-value is high for the chosen FDR of ", 
                 as.character(choseFDR)))
-    print(paste("The sample comparison indicates a large amount of differential",
-                "expression in the measured transcript populations"))
+    cat(paste("The sample comparison indicates a large amount of \n",
+              "differential expression in the measured transcript \n",
+              "populations\n"))
   }
   expDat$p.thresh <- p.thresh
   return(expDat)

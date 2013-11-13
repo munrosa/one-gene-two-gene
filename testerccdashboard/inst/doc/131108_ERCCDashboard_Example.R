@@ -77,9 +77,9 @@ source("R/saveResults.R")
 #                   printPDF = T, DEtest = T,
 #                   totalSeqReads = T, libeSizeNorm = T, myYLimMA = c(-3.5,3.5),
 #                   myXLim = c(-10,15),myYLim = NULL, filenameRoot = NULL)
-countTable = COH.RatTox.ILM.3ME.CTL.countTable
-totalReads = COH.RatTox.ILM.3ME.CTL.totalReads
-sample1Name = "3ME"
+countTable = COH.RatTox.ILM.MET.CTL.countTable
+totalReads = COH.RatTox.ILM.MET.CTL.totalReads
+sample1Name = "MET"
 sample2Name = "CTL"
 filenameRoot = "COH.ILM"
 ERCCdilution = 1/100
