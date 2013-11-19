@@ -271,7 +271,7 @@ testDE<- function(sampleInfo, expDat, cnt = cnt, info = info){
   dispcntRR = data.frame(x = RR[,3], upperY = RR[,2], lowerY = RR[,1])
   
   quasiDispPlot = ggplot() + geom_point(data = dispcnt, aes(x = mean, y = y),colour = "grey85", size = 5, alpha = 0.6) + geom_point(data = dispERCC, aes(x = mean, y = y,colour = Ratio), size = 5, alpha = 0.6) + xlab("Mean Counts") + ylab("log(Quasi Dispersion)") + stat_smooth(data = dispcntSort,aes(x = xsort, y = ysort),colour = "black") + scale_x_log10() + colScale
-  print(quasiDispPlot)
-  "Finished examining dispersions"
+  save(quasiDispPlot, file=paste(filenameRoot,"DispPlot.RData", sep = "."))
+  cat("\nFinished examining dispersions\n")
 
 }

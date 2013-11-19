@@ -1,5 +1,5 @@
 est_r_m <- function(expDat, cnt, printPlot = F){
-  cat("Check for sample mRNA fraction differences(r_m)...\n")
+  cat("\nCheck for sample mRNA fraction differences(r_m)...\n")
   sampleInfo = expDat$sampleInfo
   site <- sampleInfo$siteName
   avexlabel <- expDat$ERCCxlabelAve
@@ -7,6 +7,7 @@ est_r_m <- function(expDat, cnt, printPlot = F){
   idCols <- expDat$idCols
   # requires that the sample1 columns are first in the table -> 
   # need to add a stopifnot statement for this 
+  theme_set(theme_bw(base_size=12))
   theme_update(legend.justification=c(1,0), legend.position=c(1,0))
   
   #Create a custom color scale
@@ -115,7 +116,7 @@ est_r_m <- function(expDat, cnt, printPlot = F){
                                  (quant*r_m.se)))|(r_m.mn>(r_m.hat - nominal +
                                                              (quant*r_m.se))))
   
-  cat("Outlier ERCCs for GLM r_m Estimate:\n")
+  cat("\nOutlier ERCCs for GLM r_m Estimate:\n")
   if (length(textDat$Feature) > 0){
     cat(as.character(textDat$Feature),"\n")  
   }else{
@@ -123,21 +124,22 @@ est_r_m <- function(expDat, cnt, printPlot = F){
   }
   
   
-  cat(paste(site,"GLM log(r_m) estimate:\n"))
-  cat(r_m.mn)
-  cat("GLM log(r_m) estimate standard deviation:\n")
+  cat(paste("\nGLM log(r_m) estimate:\n"))
+  cat(r_m.mn,"\n")
+  
+  cat("\nGLM log(r_m) estimate standard deviation:\n")
   cat(r_m.mn.sd,"\n")
-  cat(nrow(r_m),"\n")
+
   r_m.upper.limit = r_m.mn + (quant)*((r_m.mn.sd)/(sqrt(nrow(r_m))))
   r_m.lower.limit = r_m.mn - (quant)*((r_m.mn.sd)/(sqrt(nrow(r_m))))
   
-  cat(paste(site,"GLM r_m estimate:\n"))
+  cat(paste(site,"\nGLM r_m estimate:\n"))
   cat(exp(r_m.mn),"\n")
   
-  cat("upper limit\n")
+  cat("\nGLM r_m upper limit\n")
   cat(exp(r_m.upper.limit),"\n")
   
-  cat("lower limit\n")
+  cat("\nGLM r_m lower limit\n")
   cat(exp(r_m.lower.limit),"\n")
   
   if (nrow(textDat)>1){
@@ -151,6 +153,8 @@ est_r_m <- function(expDat, cnt, printPlot = F){
   }
   
   expDat$idColsAdj <- idCols
-  expDat$r_m.res <- list(r_m.mn = r_m.mn, r_m.upper = r_m.upper.limit,r_m.lower = r_m.lower.limit) 
+  expDat$r_m.res <- list(r_m.mn = r_m.mn, r_m.upper = r_m.upper.limit,
+                         r_m.lower = r_m.lower.limit) 
+  expDat$Figures$r_mPlot <- plotSiter_m
   return(expDat)
 }

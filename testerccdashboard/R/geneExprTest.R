@@ -2,17 +2,23 @@ geneExprTest <- function(expDat, cnt, designMat ){
   sampleInfo <- expDat$sampleInfo
   info <- designMat
   choseFDR <- sampleInfo$choseFDR
-  qvalFile <- paste(sampleInfo$filenameRoot,"quasiSeq.res.csv",sep=".")
   # First 3 columns of qvalFile must contain Feature, pvals, and qvals
+  qvalFile <- paste(sampleInfo$filenameRoot,"quasiSeq.res.csv",sep=".")
+  
+  dispPlotFile = paste(sampleInfo$filenameRoot, ".DispPlot.RData",sep = "")
+  
   # Decide to reuse results or run testDE
   if (file.exists(qvalFile) == TRUE){
     cat(paste("\n Differential expression test results exist, will use   \n",
-              "existing results for analysis. No dispersion plots will\n",
-              "be produced. Delete", qvalFile, "if  \n",
+              "existing results for analysis. Delete", qvalFile, "if  \n",
               "you want to repeat differential expression testing.    \n"))
   }else{
     suppressWarnings(testDE(sampleInfo, expDat, cnt = cnt, info = info ))
   }
+  
+  
+  load(file = dispPlotFile)
+  
   deRes <- read.csv(file = paste(sampleInfo$filenameRoot,"quasiSeq.res.csv",
                                  sep="."))
   
@@ -30,6 +36,16 @@ geneExprTest <- function(expDat, cnt, designMat ){
               "differential expression in the measured transcript \n",
               "populations\n"))
   }
+  if(exists("quasiDispPlot")){
+    expDat$Figures$dispPlot <- quasiDispPlot  
+  }else{
+    cat(paste("\nDE testing results supplied without companion dispersion\n",
+              "analysis. Dispersion plot is unavailable to print.\n"))
+    expDat$Figures$dispPlot <- Null
+  }
+  
   expDat$p.thresh <- p.thresh
   return(expDat)
+  
+  
 }

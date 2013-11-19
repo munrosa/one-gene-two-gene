@@ -26,7 +26,8 @@ dynRangePlotLODR <- function(dynRangeRes = dynRangeRes,LODR.annot.ERCC = LODR.an
   if(dim(hDat)[1] == 0){ print("Error! Estimated distribution of p-values does not cross threshold p-value, may be due to insufficient data quantity"); break}
   
   dynRangeAnnot <- dynRangeRes + geom_segment(data = hDat, aes(x = x,y = y,xend = xend , yend = yend, colour = Ratio), lineend = "round",size = 2, alpha = 0.5) + geom_segment(data = vDat, aes(x = x,y = yend,xend = xend , yend = y, colour = Ratio),lineend = "round",arrow = arrow(length =unit(0.5,"cm")), size = 2,alpha = 0.5)
-  print(dynRangeAnnot)
-  
+  #print(dynRangeAnnot)
+  expDat$Figures$plotdynRangeAnnot <- dynRangeAnnot
+  return(expDat)
   
 }

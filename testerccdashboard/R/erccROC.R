@@ -15,7 +15,7 @@ erccROC <- function(expDat){
   myColorsDiff <- myColors[-(which(folds$FC == 1))]
   legendLabelsDiff <- legendLabels[-(which(folds$FC == 1))]
   
-  theme_update(legend.justification=c(1,0.375), legend.position=c(1,0.375))
+  
   
   colScale <- scale_colour_manual(name = "Ratio",values = myColorsDiff, labels = legendLabelsDiff)
   fillScale <- scale_fill_manual(name = "Ratio", values = myColorsDiff, labels = legendLabelsDiff)
@@ -64,13 +64,16 @@ erccROC <- function(expDat){
   }
   
   AUCAnnot <- AUCdat
+  cat("\nArea Under the Curve (AUC) Results:\n")
   print(AUCAnnot)
   
   AUCdat$xval = 0.7
   AUCdat$yval = seq(to = 0.25,from = 0.1,length.out=nrow(FCcodeC))
   
-  ROCplot = ggplot(data = ROCdat, aes(x = FPR, y = TPR)) + geom_path(size = 2, aes(colour = Ratio), alpha = 0.7)+geom_point(size = 5, aes(colour = Ratio), alpha = 0.7) +colScale + geom_abline(intercept = 0, slope = 1, linetype = 2)+ annotation_custom(grob=tableGrob(AUCAnnot,show.rownames=F,equal.width=T,equal.height=T),xmin=0.375,xmax=1.0,ymin = 0,ymax = 0.25) #+geom_text(data = AUCdat,aes(x = xval, y = yval,label = paste(Ratio, "AUC =",as.character(round(AUC,digits=3))),hjust = 0)) 
-  print(ROCplot)
-  return(list(ROCplot=ROCplot,AUCdat = AUCAnnot))
+  ROCplot = ggplot(data = ROCdat, aes(x = FPR, y = TPR)) + geom_path(size = 2, aes(colour = Ratio), alpha = 0.7)+geom_point(size = 5, aes(colour = Ratio), alpha = 0.7) +colScale + geom_abline(intercept = 0, slope = 1, linetype = 2)+ annotation_custom(grob=tableGrob(AUCAnnot,show.rownames=F,equal.width=T,equal.height=T),xmin=0.375,xmax=1.0,ymin = 0,ymax = 0.25) + theme(legend.position=c(1,0.5)) #+geom_text(data = AUCdat,aes(x = xval, y = yval,label = paste(Ratio, "AUC =",as.character(round(AUC,digits=3))),hjust = 0)) 
+  
+  expDat$Figures$ROCplot <- ROCplot
+  expDat$AUCdat <- AUCAnnot
+  return(expDat)
  
 }

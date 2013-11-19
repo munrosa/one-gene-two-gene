@@ -2,8 +2,8 @@ meltExpDat <- function(expDat, cnt, designMat){
   sampleInfo <- expDat$sampleInfo
   libeSize <- expDat$sampleLibeSums
   datNames <- colnames(designMat)[-1]
-  sample1 <- expDat$sample1
-  sample2 <- expDat$sample2
+  sample1 <- expDat$sampleNames[1]
+  sample2 <- expDat$sampleNames[2]
   
   datCols = cnt[-c(1)]
   libAdjust = sweep(datCols, 2, libeSize,"/")

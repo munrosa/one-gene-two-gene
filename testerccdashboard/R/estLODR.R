@@ -14,7 +14,7 @@ estLODR <- function(expDat,kind = "ERCC", prob=0.9){
   legendLabels = sampleInfo$legendLabels
   
   
-  theme_update(legend.justification=c(0,0), legend.position=c(0,0))
+  
 
   #Create a custom color scale
   myColors <- c("#FF9900","#339966", "#6699CC", "#CC6666")
@@ -164,9 +164,13 @@ estLODR <- function(expDat,kind = "ERCC", prob=0.9){
   arrowDat = arrowDat[-which(arrowDat$FC == "1"),]
   arrowDat = arrowDat[which(is.finite(arrowDat$x)),]
   
-  if(dim(arrowDat)[1] == 0){ print("Error! Estimated distribution of p-values does not cross threshold p-value, may be due to insufficient data quantity"); break}
+  if(dim(arrowDat)[1] == 0){
+    cat(paste("\nError! Estimated distribution of p-values does not cross \n",
+              "threshold p-value, may be due to insufficient data quantity\n"))
+    break
+  }
   
-  LODRplot = ggplot(pval.res) + geom_point(aes(x = MnCnt, y = Pval,colour = Ratio),size = 6) + scale_x_log10(limits = c(1,max(pval.res$MnCnt))) + scale_y_log10(breaks = c(1e-12,1e-10,1e-8,1e-5,1e-4,1e-3,1e-2,1e-1,1e0)) + geom_ribbon(data = lineDat, aes(x = x.new, y = fitLine, ymin=fitLower, ymax=fitUpper,fill = Ratio), alpha = 0.3,show_guide =F) + geom_line(data = lineDat,aes(x = x.new, y=fitLine, colour = Ratio),show_guide = F) + colScale + fillScale + xlab("Mean Counts") + ylab("DE Test P-values") + geom_hline(yintercept = pval.cutoff, linetype = 2, size = 2 ) + geom_segment(data = arrowDat, aes(x = x,y = y,xend = xend , yend = yend, colour = Ratio), lineend = "round",arrow = arrow(length =unit(0.5,"cm")), size = 2, alpha = 0.6) #+ annotation_custom(tableGrob(annoTable, show.rownames=F, parse = F), xmin = min(log(pval.res$MnCnt)), xmax = 0.25*log(mean(pval.res$MnCnt)), ymin =log(1e-12),ymax = 0  ) 
+  LODRplot = ggplot(pval.res) + geom_point(aes(x = MnCnt, y = Pval,colour = Ratio),size = 6) + scale_x_log10(limits = c(1,max(pval.res$MnCnt))) + scale_y_log10(breaks = c(1e-12,1e-10,1e-8,1e-5,1e-4,1e-3,1e-2,1e-1,1e0)) + geom_ribbon(data = lineDat, aes(x = x.new, y = fitLine, ymin=fitLower, ymax=fitUpper,fill = Ratio), alpha = 0.3,show_guide =F) + geom_line(data = lineDat,aes(x = x.new, y=fitLine, colour = Ratio),show_guide = F) + colScale + fillScale + xlab("Mean Counts") + ylab("DE Test P-values") + geom_hline(yintercept = pval.cutoff, linetype = 2, size = 2 ) + geom_segment(data = arrowDat, aes(x = x,y = y,xend = xend , yend = yend, colour = Ratio), lineend = "round",arrow = arrow(length =unit(0.5,"cm")), size = 2, alpha = 0.6) + theme(legend.justification=c(0,0), legend.position=c(0,0)) #+ annotation_custom(tableGrob(annoTable, show.rownames=F, parse = F), xmin = min(log(pval.res$MnCnt)), xmax = 0.25*log(mean(pval.res$MnCnt)), ymin =log(1e-12),ymax = 0  ) 
     
   ## create inset table
   my_table <- tableGrob(annoTable,show.rownames=F,gpar.coretext =gpar(fontsize=14),gpar.coltext=gpar(fontsize=14), gpar.rowtext=gpar(fontsize=14))
@@ -174,22 +178,33 @@ estLODR <- function(expDat,kind = "ERCC", prob=0.9){
   
   ### final result 
   
-  Layout <- grid.layout(nrow = 2, ncol = 1, heights = unit(c(2, 0.5), c("null", "null")))
-  #grid.show.layout(Layout)
-  vplayout <- function(...) {
-    grid.newpage()
-    pushViewport(viewport(layout = Layout))
-  }
+#   Layout <- grid.layout(nrow = 2, ncol = 1, heights = unit(c(2, 0.5), c("null", "null")))
+#   #grid.show.layout(Layout)
+#   vplayout <- function(...) {
+#     grid.newpage()
+#     pushViewport(viewport(layout = Layout))
+#   }
+#   
+#   subplot <- function(x, y) viewport(layout.pos.row = x, layout.pos.col = y)
+#   
+#   mmplot <- function(a, b) {
+#     vplayout()
+#     print(a, vp = subplot(1, 1))
+#     print(b, vp = subplot(2, 1))
+#   }
+#   
+#   annotLODRplot <- grob(mmplot(LODRplot, arrangeGrob(my_table)))
+  #vplayout()
+  annotLODRplot <- arrangeGrob(LODRplot, arrangeGrob(my_table), ncol = 1, heights = c(2,0.5))
+  print(annotLODRplot)
   
-  subplot <- function(x, y) viewport(layout.pos.row = x, layout.pos.col = y)
+  nam <- paste("plotLODR",kind, sep = ".")
+  expDat$Figures$plotLODR <- annotLODRplot
+  names(expDat$Figures)[which(names(expDat$Figures) == "plotLODR")] <- nam
   
-  mmplot <- function(a, b) {
-    vplayout()
-    print(a, vp = subplot(1, 1))
-    print(b, vp = subplot(2, 1))
-  }
+  nam <- paste("lodr.res",kind,sep = ".")
+  expDat$lodr.res <- lodr.resLess
+  names(expDat)[which(names(expDat) == "lodr.res")] <- nam
   
-  mmplot(LODRplot, arrangeGrob(my_table))
-  
-  return(lodr.resLess)
+  return(expDat)
 }

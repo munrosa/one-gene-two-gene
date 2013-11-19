@@ -43,7 +43,7 @@ initDat <- function(countTable, totalReads, filenameRoot, sample1Name,
   sampleInfo = list(sample1Name = sample1Name,
                     sample2Name = sample2Name, choseFDR = choseFDR,
                     ERCCdilution = ERCCdilution, spikeVol = spikeVol,
-                    totalRNAmass = totalRNAmass, printPDF = printPDF, 
+                    totalRNAmass = totalRNAmass, 
                     totalSeqReads = totalSeqReads, 
                     libeSizeNorm = libeSizeNorm, myYLimMA = myYLimMA,
                     myXLim = myXLim, myYLim = myYLim)
@@ -51,7 +51,7 @@ initDat <- function(countTable, totalReads, filenameRoot, sample1Name,
   expDat = list(sampleInfo = sampleInfo)
   
   if (!is.null(filenameRoot)){
-    expDat <- dashboardPDF(expDat,filenameRoot = filenameRoot)  
+    expDat <- dashboardFile(expDat,filenameRoot = filenameRoot)  
   }else{
     stop("The filenameRoot character string has not been defined!")
   }

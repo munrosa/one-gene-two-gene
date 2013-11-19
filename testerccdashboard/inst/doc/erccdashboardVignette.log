@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  11 NOV 2013 17:33
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  18 NOV 2013 17:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -279,104 +279,73 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 (./erccdashboardVignette-concordance.tex)
-LaTeX Font Info:    Try loading font information for T1+aett on input line 18.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 17.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 18.
+(Font)              <12> on input line 17.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 18.
+(Font)              <8> on input line 17.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 18.
+(Font)              <6> on input line 17.
  [1
 
 {/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 101.
+(Font)              <7> on input line 112.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 101.
- [2]
-<erccdashboardVignette-est_r_m.pdf, id=17, 505.89pt x 505.89pt>
-File: erccdashboardVignette-est_r_m.pdf Graphic file (type pdf)
+(Font)              <5> on input line 112.
+ [2] [3] [4]
+<erccdashboardVignette-printPanelD.pdf, id=25, 505.89pt x 505.89pt>
+File: erccdashboardVignette-printPanelD.pdf Graphic file (type pdf)
 
-<use erccdashboardVignette-est_r_m.pdf>
-Package pdftex.def Info: erccdashboardVignette-est_r_m.pdf used on input line 1
-85.
+<use erccdashboardVignette-printPanelD.pdf>
+Package pdftex.def Info: erccdashboardVignette-printPanelD.pdf used on input li
+ne 351.
 (pdftex.def)             Requested size: 375.80544pt x 375.81166pt.
- [3]
-<erccdashboardVignette-erccROC.pdf, id=22, 505.89pt x 505.89pt>
-File: erccdashboardVignette-erccROC.pdf Graphic file (type pdf)
+ [5]
+<erccdashboardVignette-printPanelE.pdf, id=29, 505.89pt x 505.89pt>
+File: erccdashboardVignette-printPanelE.pdf Graphic file (type pdf)
 
-<use erccdashboardVignette-erccROC.pdf>
-Package pdftex.def Info: erccdashboardVignette-erccROC.pdf used on input line 2
-18.
+<use erccdashboardVignette-printPanelE.pdf>
+Package pdftex.def Info: erccdashboardVignette-printPanelE.pdf used on input li
+ne 359.
 (pdftex.def)             Requested size: 375.80544pt x 375.81166pt.
- [4 <./erccdashboardVignette-est_r_m.pdf>] <erccdashboardVignette-estLODRERCC.p
-df, id=37, 505.89pt x 505.89pt>
-File: erccdashboardVignette-estLODRERCC.pdf Graphic file (type pdf)
+ [6 <./erccdashboardVignette-printPanelD.pdf>] <erccdashboardVignette-printPane
+lF.pdf, id=45, 505.89pt x 505.89pt>
+File: erccdashboardVignette-printPanelF.pdf Graphic file (type pdf)
 
-<use erccdashboardVignette-estLODRERCC.pdf>
-Package pdftex.def Info: erccdashboardVignette-estLODRERCC.pdf used on input li
-ne 233.
+<use erccdashboardVignette-printPanelF.pdf>
+Package pdftex.def Info: erccdashboardVignette-printPanelF.pdf used on input li
+ne 367.
 (pdftex.def)             Requested size: 375.80544pt x 375.81166pt.
- [5 <./erccdashboardVignette-erccROC.pdf>] <erccdashboardVignette-estLODRSim.pd
-f, id=51, 505.89pt x 505.89pt>
-File: erccdashboardVignette-estLODRSim.pdf Graphic file (type pdf)
-
-<use erccdashboardVignette-estLODRSim.pdf>
-Package pdftex.def Info: erccdashboardVignette-estLODRSim.pdf used on input lin
-e 248.
-(pdftex.def)             Requested size: 375.80544pt x 375.81166pt.
- [6 <./erccdashboardVignette-estLODRERCC.pdf>] <erccdashboardVignette-dynRangeD
-at.pdf, id=65, 505.89pt x 505.89pt>
-File: erccdashboardVignette-dynRangeDat.pdf Graphic file (type pdf)
-
-<use erccdashboardVignette-dynRangeDat.pdf>
-Package pdftex.def Info: erccdashboardVignette-dynRangeDat.pdf used on input li
-ne 271.
-(pdftex.def)             Requested size: 375.80544pt x 375.81166pt.
- [7 <./erccdashboardVignette-estLODRSim.pdf>]
-<erccdashboardVignette-dynRangeLODRAnnot.pdf, id=80, 505.89pt x 505.89pt>
-File: erccdashboardVignette-dynRangeLODRAnnot.pdf Graphic file (type pdf)
-
-<use erccdashboardVignette-dynRangeLODRAnnot.pdf>
-Package pdftex.def Info: erccdashboardVignette-dynRangeLODRAnnot.pdf used on in
-put line 293.
-(pdftex.def)             Requested size: 375.80544pt x 375.81166pt.
- [8 <./erccdashboardVignette-dynRangeDat.pdf>]
-<erccdashboardVignette-maConcPlot.pdf, id=94, 505.89pt x 505.89pt>
-File: erccdashboardVignette-maConcPlot.pdf Graphic file (type pdf)
-
-<use erccdashboardVignette-maConcPlot.pdf>
-Package pdftex.def Info: erccdashboardVignette-maConcPlot.pdf used on input lin
-e 321.
-(pdftex.def)             Requested size: 375.80544pt x 375.81166pt.
- [9 <./erccdashboardVignette-dynRangeLODRAnnot.pdf>] [10 <./erccdashboardVignet
-te-maConcPlot.pdf>]
+ [7 <./erccdashboardVignette-printPanelE.pdf>] [8 <./erccdashboardVignette-prin
+tPanelF.pdf>]
 (./erccdashboardVignette.aux) ) 
 Here is how much of TeX's memory you used:
- 2771 strings out of 493488
- 41249 string characters out of 3141326
- 88820 words of memory out of 3000000
- 5998 multiletter control sequences out of 15000+200000
- 26346 words of font info for 63 fonts, out of 3000000 for 9000
+ 2744 strings out of 493488
+ 40455 string characters out of 3141326
+ 89820 words of memory out of 3000000
+ 5981 multiletter control sequences out of 15000+200000
+ 24290 words of font info for 56 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 37i,6n,23p,450b,302s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 37i,6n,23p,304b,355s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/local/texlive/2012/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr12.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr17.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmtt10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmtt12.pfb>
-Output written on erccdashboardVignette.pdf (10 pages, 198946 bytes).
+ic/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr12.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr17.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmtt10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmtt12.pfb>
+Output written on erccdashboardVignette.pdf (8 pages, 150498 bytes).
 PDF statistics:
- 153 PDF objects out of 1000 (max. 8388607)
- 116 compressed objects within 2 object streams
+ 105 PDF objects out of 1000 (max. 8388607)
+ 78 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 40 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 20 words of extra memory for PDF output out of 10000 (max. 10000000)
 

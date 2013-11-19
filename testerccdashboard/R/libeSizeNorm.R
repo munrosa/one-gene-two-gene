@@ -24,8 +24,8 @@ libeSizeNorm <- function(expDat){
     expressDat = cbind(expressDat[c(1)], libAdjust)
   }
   
-  print("Library sizes:")
-  print(libeSize)
+  cat("Library sizes:\n")
+  cat(libeSize)
   
   # get just ERCC data in the expression data frame
   expressDat = expressDat[c(grep("ERCC-0", expressDat$Feature)),]

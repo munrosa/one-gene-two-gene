@@ -204,18 +204,21 @@ dynRangePlot <- function(expDat, expressDat = expDat$expressDat,
   if((any(minLabel))){
   effectsPlot = ggplot(effects, aes(x = AveConc, y = ERCC.effect)) + geom_point(aes(colour = Ratio),size = 6, alpha = 0.8) + xlabel +ylab("Per ERCC Differences from Linear Fit Standardized by s.e., unitless)") + coord_cartesian(ylim = xlimEffects, xlim = myXLim) + colScale + geom_text(data=subset(effects,(ERCC.effect <= fivenum(ERCC.effect)[2] - (1.5)*IQR(ERCC.effect))),aes(x = AveConc, y = ERCC.effect, label = gsub("ERCC-00","",Feature)),colour = "black",show_guide = F,angle = 45,hjust = -0.25, position = position_jitter(width=0.5))#+geom_point(data=subset(residDat,abs(Resid) >= 1),aes(x = Conc, y = Resid),colour = "white",size = 3,show_guide = F) + 
   
-  print(effectsPlot)
+  #print(effectsPlot)
   
 }else{
-  effectsPlot2 = ggplot(effects, aes(x = AveConc, y = ERCC.effect)) + geom_point(aes(colour = Ratio),size = 6, alpha = 0.8) + xlabel + ylab("Per ERCC Differences from Linear Fit Standardized by s.e., unitless)") + coord_cartesian(ylim= xlimEffects, xlim = myXLim) + colScale #+ geom_text(data=subset(effects,(ERCC.effect <= -.75)),aes(x = AveConc, y = ERCC.effect, label = gsub("ERCC-00","",Feature)),colour = "purple",show_guide = F, angle = 45,hjust = -0.25, position = position_jitter(width=0.5))#+geom_point(data=subset(residDat,abs(Resid) >= 1),aes(x = Conc, y = Resid),colour = "white",size = 3,show_guide = F) + 
+  effectsPlot = ggplot(effects, aes(x = AveConc, y = ERCC.effect)) + geom_point(aes(colour = Ratio),size = 6, alpha = 0.8) + xlabel + ylab("Per ERCC Differences from Linear Fit Standardized by s.e., unitless)") + coord_cartesian(ylim= xlimEffects, xlim = myXLim) + colScale #+ geom_text(data=subset(effects,(ERCC.effect <= -.75)),aes(x = AveConc, y = ERCC.effect, label = gsub("ERCC-00","",Feature)),colour = "purple",show_guide = F, angle = 45,hjust = -0.25, position = position_jitter(width=0.5))#+geom_point(data=subset(residDat,abs(Resid) >= 1),aes(x = Conc, y = Resid),colour = "white",size = 3,show_guide = F) + 
   
-  print(effectsPlot2)
+  #print(effectsPlot)
 }  
   
 # Get the residuals from fit1.lm
 
     fit.coeff = unlist(fit1.lm$coefficients)
-
-  return(list(fit.coeff = fit.coeff,dynRangeDatMix1_l = dynRangeDatMix1_l, dynRangeDatMix2_l = dynRangeDatMix2_l, dynRangePlotRes = showlmGeomSmooth, effects = effects))
+  expDat$fit.coeff <- fit.coeff
+  expDat$Figures$plotdynRange <- showlmGeomSmooth
+  expDat$Figures$plotERCCeffects <- effectsPlot
+  return(expDat)
+  #return(list(fit.coeff = fit.coeff,dynRangeDatMix1_l = dynRangeDatMix1_l, dynRangeDatMix2_l = dynRangeDatMix2_l, dynRangePlotRes = showlmGeomSmooth, effects = effects))
  
 }

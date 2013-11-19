@@ -1,13 +1,13 @@
-printLODRres <- function(expDat, dynRangeDat, lodr.res){
+printLODRres <- function(expDat){
   sampleInfo <- expDat$sampleInfo
-  fit.coeff <- dynRangeDat$fit.coeff
+  fit.coeff <- expDat$fit.coeff
   mnLibeFactor <- expDat$mnLibeFactor
   
   FCcode = sampleInfo$FCcode
   legendLabels = sampleInfo$legendLabels
   
 
-  lodr.res = data.frame(lodr.res)
+  lodr.res = data.frame(expDat$lodr.res.ERCC)
   
   Fold = lodr.res[c(1)]
   Count = as.numeric(gsub("<", "",lodr.res$Estimate))

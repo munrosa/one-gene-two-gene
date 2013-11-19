@@ -2,12 +2,12 @@
     "path" : "~/Documents/NISTMunro/Projects/testerccdashboard/inst/doc",
     "sortOrder" : [
         {
-            "ascending" : true,
-            "columnIndex" : 2
-        },
-        {
             "ascending" : false,
             "columnIndex" : 4
+        },
+        {
+            "ascending" : true,
+            "columnIndex" : 2
         },
         {
             "ascending" : false,

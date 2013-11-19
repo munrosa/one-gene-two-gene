@@ -26,7 +26,7 @@ License: GPL (>=2)
 Collate:
     'QL.results.R'
     'compareReps.R'
-    'dashboardPDF.R'
+    'dashboardFile.R'
     'dynRangePlot.R'
     'dynRangePlotLODR.R'
     'erccROC.R'
@@ -47,6 +47,8 @@ Collate:
     'printLODRres.R'
     'saveInputs.R'
     'saveResults.R'
+    'savePlots.R'
     'str_lengthTest.R'
     'sumTechReps.R'
     'testDE.R'
+    'annotLODR.R'

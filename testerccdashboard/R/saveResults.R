@@ -1,22 +1,21 @@
-saveResults <- function(expDat, erccROC.res, maPlotAB, lodr.ERCC){
+saveResults <- function(expDat){
   
   filenameRoot <- expDat$sampleInfo$filenameRoot
-  
   # Name and consolidate metrics for the interlaboratory comparison
   #nam <- paste(filenameRoot, "expDat",sep = ".")
   #assign(nam,expDat)
   
   nam <- paste(filenameRoot, "AUC",sep = ".")
-  assign(nam,erccROC.res$AUCdat)
+  assign(nam,expDat$AUCdat)
   
   nam <- paste(filenameRoot, "lodr.ERCC",sep = ".")
-  assign(nam,lodr.ERCC)
+  assign(nam,expDat$lodr.res.ERCC)
   
   nam <- paste(filenameRoot, "sdGlobal",sep = ".")
-  assign(nam,maPlotAB$sdGlobal)
+  assign(nam,expDat$sdGlobal)
   
   nam <- paste(filenameRoot, "modRatVar",sep = ".")
-  assign(nam,maPlotAB$modRatVar)
+  assign(nam,expDat$modRatVar)
   
   nam <- paste(filenameRoot, "r_m",sep = ".")
   assign(nam,expDat$r_m.res$r_m.mn)
@@ -34,9 +33,5 @@ saveResults <- function(expDat, erccROC.res, maPlotAB, lodr.ERCC){
   
   save(list = to.save[grepl(pattern = filenameRoot,x=to.save)],
        file=paste(filenameRoot,"Results","RData",sep = "."))
-  
-  if (expDat$sampleInfo$printPDF == T){
-    dev.off()  
-  }
   
 }
