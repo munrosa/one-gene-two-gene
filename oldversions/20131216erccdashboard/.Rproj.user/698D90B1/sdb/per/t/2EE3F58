@@ -1,0 +1,16 @@
+{
+    "contents" : "prepERCCDat <- function(){\n  attach(expDat)\n  attach(sampleInfo)\n  expressDat <- TranscriptsAB\n  # get just ERCC data in the expression data frame\n  expressDat = expressDat[c(grep(\"ERCC-0\", expressDat$Feature)),]\n  print(head(expressDat))\n  # Length normalize the Expected ERCC concentrations\n  lengthFactor = (idCols$Length)/(1000)\n  \n  # If length normalization of the expected concentrations is desired (default)\n  idCols$Conc1 = (idCols$Conc1*lengthFactor)\n  idCols$Conc2 = (idCols$Conc2*lengthFactor)  \n  \n  ### Calculate the per ERCC amount spiked attomoles of nt / ug total RNA\n  ### ERCCdilution = 1; spikeVol = 50; totalRNAmass = 2.5*10^(3)\n  spikeFraction <- (ERCCdilution*spikeVol)/(totalRNAmass)\n  idCols$Conc1 <- idCols$Conc1*spikeFraction\n  idCols$Conc2 <- idCols$Conc2*spikeFraction\n  \n  ERCCxlabelIndiv = expression(paste(\"Log2 ERCC Spike Amount(attomol nt/\",mu,\"g total RNA)\",sep = \"\"))\n  ERCCxlabelAve = expression(paste(\"Log2 Average ERCC Spike Amount(attomol nt/\",mu,\"g total RNA)\",sep = \"\"))\n  expDat$idCols <- idCols\n  expDat$ERCCxlabelIndiv <- ERCCxlabelIndiv\n  expDat$ERCCxlabelAve <- ERCCxlabelAve\n  return(expDat)\n  detach(expDat)\n  detach(sampleInfo)\n  \n}",
+    "created" : 1377149240174.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4145899467",
+    "id" : "2EE3F58",
+    "lastKnownWriteTime" : 1377151326,
+    "path" : "/Volumes/POMONA/testerccdashboard/R/prepERCCDat.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
