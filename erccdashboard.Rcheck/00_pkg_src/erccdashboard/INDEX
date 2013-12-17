@@ -1,7 +1,0 @@
-erccROC                 Produce Receiver Operator Characteristic (ROC)
-                        Curves and AUC statistics
-est_r_m                 Estimate the mRNA fraction differences for the
-                        pair of samples using replicate data
-geneExprTest            Prepare differential expression testing results
-                        for spike-in analysis
-initDat                 Initialize the expDat list
