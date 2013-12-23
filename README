@@ -1,0 +1,22 @@
+These are the source and binary files for the erccdashboard (v. 0.9.2)
+erccdashboard_0.9.2.tar.gz is the source code
+erccdasboard_0.9.2.tgz is a Mac OS binary
+erccdashboard_0.9.2.zip is a Windows binary
+
+Note that the erccdashboard package has other packages as dependencies. These packages will need to be installed and loaded by the user. Once the erccdashboard package is on CRAN the package dependencies will automatically be accessed during installation and loading. All package dependencies are on CRAN except for edgeR which is on Bioconductor. Use the following R commands to install edgeR: 
+
+source("http://bioconductor.org/biocLite.R")
+biocLite("edgeR")
+
+The full list of erccdashboard package dependencies is:
+ggplot2
+reshape2
+plyr
+scales
+edgeR
+locfit
+QuasiSeq
+grid
+gridExtra
+stringr
+ROCR

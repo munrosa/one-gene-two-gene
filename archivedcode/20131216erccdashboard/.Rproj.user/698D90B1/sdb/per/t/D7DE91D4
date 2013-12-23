@@ -1,0 +1,16 @@
+{
+    "contents" : "dashboardPDF <-function(sampleInfo){\n  attach(sampleInfo)\n  filenameRoot = paste(siteName,analysis,platform,sample1,sample2,sep = \".\")\n  print(filenameRoot)\n  theme_set(theme_bw(base_size=12))\n  # Open PDF file to write results\n  if (printPDF == T){\n    pdf(file = paste(filenameRoot,\"pdf\",sep=\".\"),onefile=T,width=7,height = 7)  \n  }\n  \n  sampleInfo$filenameRoot <- filenameRoot\n  detach(sampleInfo)\n  return(sampleInfo)\n}",
+    "created" : 1377151221055.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "530360647",
+    "id" : "D7DE91D4",
+    "lastKnownWriteTime" : 1377151242,
+    "path" : "/Volumes/POMONA/testerccdashboard/R/dashboardPDF.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

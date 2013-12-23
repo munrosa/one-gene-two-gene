@@ -1,0 +1,15 @@
+{
+    "contents" : "Package: erccdashboard\nType: Package\nTitle: Assessment of Gene Expression Measurement Technical Performance with\n    External Spike-in RNA Controls\nVersion: 0.9.2\nAuthor: Sarah Munro <sarah.munro@nist.gov>\nMaintainer: Sarah Munro <sarah.munro@nist.gov>\nDescription: erccdashboard produces graphs and performance metrics for gene\n    expression measurements derived from analysis of the External RNA\n    Control Consortium (ERCC) spike-in controls.\nURL: http://nist.gov/erccControls\nDepends:\n    R (>= 2.15.3), ggplot2\nImports:\n    reshape2,\n    plyr,\n    scales,\n    edgeR,\n    locfit,\n    QuasiSeq,\n    grid,\n    gridExtra,\n    stringr,\n    ROCR\nLicense: GPL (>=2)\nCollate:\n    QL.results.R compareReps.R dashboardFile.R dynRangePlot.R \n    dynRangePlotLODR.R erccROC.R estLODR.R estMnLibeFactor.R est_r_m.R \n    geneExprTest.R getDesignMat.R initDat.R libeSizeNorm.R loadERCCInfo.R \n    loadExpMeas.R loadExpMeasFromRaw.R maConcPlot.R meltExpDat.R multiplot.R \n    prepERCCDat.R printLODRres.R saveInputs.R saveResults.R savePlots.R \n    sumTechReps.R testDE.R annotLODR.R",
+    "created" : 1387243224880.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2409910194",
+    "id" : "59EB7D04",
+    "lastKnownWriteTime" : 1387243237,
+    "path" : "~/Documents/NISTMunro/Projects/erccdashboard/DESCRIPTION",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "dcf"
+}
